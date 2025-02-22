@@ -9,7 +9,7 @@ def home(request):
         message = request.POST.get('message')
         if name and message:
             GuestMessage.objects.create(name=name, message=message, timestamp=timezone.now())
-            success = True
+            return redirect('home') 
 
     gallery_items = GalleryItem.objects.all()
     guest_messages = GuestMessage.objects.all().order_by('-timestamp')
